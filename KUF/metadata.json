@@ -1,0 +1,10 @@
+{
+  "name": "Known-You Seed Authentication",
+  "description": "Mobile product registration, DYRECT authenticity verification, scanned details, and customer support for Known-You Seed.",
+  "requestFramePermissions": [
+    "geolocation"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

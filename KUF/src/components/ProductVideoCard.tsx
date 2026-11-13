@@ -7,7 +7,9 @@ interface ProductVideoCardProps {
   video: YouTubeVideo;
 }
 
-const CARD_HEIGHT = 137; // px - same height as the video cards in the real app
+// Card shape taken from the real app: about 345 px wide x 141 px tall on a phone (725 x 297 in the screenshot).
+// The height follows the width, so the cards keep the same proportions on every screen size.
+const CARD_ASPECT = '725 / 297';
 const FONT = 'Roboto, "Noto Sans Devanagari", sans-serif';
 const SHADOW = '0 0 6px rgba(0,0,0,0.55), 0 1px 2px rgba(0,0,0,0.6)';
 
@@ -45,7 +47,7 @@ export const ProductVideoCard: React.FC<ProductVideoCardProps> = ({ video }) => 
         title={video.title}
         src={`https://www.youtube.com/embed/${video.youtubeId}?autoplay=1&rel=0&playsinline=1`}
         className="block w-full border-0 bg-black rounded-[6px]"
-        style={{ height: CARD_HEIGHT }}
+        style={{ aspectRatio: CARD_ASPECT }}
         referrerPolicy="strict-origin-when-cross-origin"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowFullScreen
@@ -80,7 +82,7 @@ export const ProductVideoCard: React.FC<ProductVideoCardProps> = ({ video }) => 
       onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && play()}
       aria-label={`Play ${video.title}`}
       className="relative w-full overflow-hidden rounded-[6px] bg-[#1b1b1b] cursor-pointer select-none"
-      style={{ height: CARD_HEIGHT, fontFamily: FONT }}
+      style={{ aspectRatio: CARD_ASPECT, fontFamily: FONT }}
     >
       {/* Thumbnail */}
       {thumbSrc ? (

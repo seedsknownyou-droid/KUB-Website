@@ -12,7 +12,7 @@ import { SuccessToast } from '../components/SuccessToast';
 import { buildProduct, findCatalogProduct, ProductDetails } from '../constants/productData';
 import { storageService } from '../services/storageService';
 import { apiService, ApiError, ApiProduct } from '../services/apiService';
-import { OWNER_OPENS_DETAILS_ON_RESCAN } from '../constants/appConfig';
+import { OWNER_OPENS_DETAILS_ON_RESCAN } from '../constants/appConfig.ts';
 
 export const RegisterProductPage: React.FC = () => {
   const navigate = useNavigate();
@@ -338,16 +338,17 @@ export const RegisterProductPage: React.FC = () => {
     <div className="min-h-screen bg-white text-gray-900 pb-16 flex flex-col font-sans">
       <MobileHeader title="Register Product" />
 
-      <section aria-label="Product Summary" className="bg-[#F8F8F8] shadow-[0_1px_0_rgba(0,0,0,0.04)]">
-        <div className="max-w-[576px] mx-auto px-[14px] h-[49px] flex items-center">
+      {/* Product summary card: photo on the left, product name and serial number on the right */}
+      <section aria-label="Product Summary" className="bg-white">
+        <div className="max-w-[576px] mx-auto px-[14px] pt-[22px] pb-[20px] flex items-center">
           <div className="w-[48px] h-[36px] shrink-0 flex items-center justify-center ml-[14px]">
             <PapayaGraphic size="thumb" src={catalogProduct.cutoutImage || catalogProduct.heroImage} alt={displayName} />
           </div>
-          <div className="flex flex-col ml-[28px]">
-            <h2 className="text-[16px] font-normal text-[#858585] leading-[20px]">
+          <div className="flex flex-col ml-[26px] min-w-0">
+            <h2 className="text-[16px] font-normal text-[#787878] leading-[20px] truncate">
               {displayName}
             </h2>
-            <p className="text-[12px] text-[#858585] leading-[16px] mt-[3px]">
+            <p className="text-[13px] font-normal text-[#787878] leading-[16px] mt-[6px]">
               Serial No: {serialNumber}
             </p>
           </div>
